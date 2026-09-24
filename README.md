@@ -1,43 +1,41 @@
-# Astro Starter Kit: Minimal
+# HealthOutline
+
+Free, plain-language health system navigation for Ontario.
+
+HealthOutline helps people find their way through Ontario's healthcare system. That includes getting a health card (OHIP), finding a family doctor, understanding coverage, and reaching mental health support. We help people **find** care. We don't provide medical advice, diagnosis, or treatment.
+
+Built with [Astro](https://astro.build).
+
+## Getting started
+
+Requires **Node.js 22.12+**.
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev        # http://localhost:4321
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+| Command           | What it does                                  |
+| :---------------- | :-------------------------------------------- |
+| `npm run dev`     | Start the local dev server                    |
+| `npm run build`   | Build the production site into `dist/`        |
+| `npm run preview` | Preview the production build locally          |
 
-## 🚀 Project Structure
+## Project structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+  pages/         One file per page (index.astro is the homepage)
+  components/    Page sections: Header, Hero, Triage, Trust, Pillars, Programs, Footer
+  styles/
+    global.css   Shared colours, fonts, and base styles
+public/          Logo, favicons, and other static files
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Contributing
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Please read **[CONTRIBUTING.md](CONTRIBUTING.md)** before making changes. It covers branch names, commit messages, pull requests, code style, and content rules.
 
-Any static assets, like images, can be placed in the `public/` directory.
+---
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+*HealthOutline does not provide medical advice. In an emergency, call 911.*
