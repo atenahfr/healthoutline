@@ -214,8 +214,10 @@ The homepage already links to these URLs. When you build one, use **exactly** th
 
 | URL                              | Page                       |
 | :------------------------------- | :------------------------- |
-| `/get-started`                   | Get started                |
+| `/get-started`                   | Get started ✅ built       |
 | `/navigate-care`                 | Navigate Care hub          |
+| `/navigate-care/dental`          | Dental care                |
+| `/navigate-care/medical`         | Medical care               |
 | `/navigate-care/new-to-ontario`  | New to Ontario             |
 | `/navigate-care/find-a-doctor`   | Find a doctor              |
 | `/navigate-care/mental-health`   | Mental health support      |
