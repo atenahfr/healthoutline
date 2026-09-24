@@ -1,0 +1,142 @@
+---
+const cards = [
+  {
+    icon: "tooth",
+    title: "Dental Care",
+    desc: "Learn about dental care, common concerns, and where to go.",
+    cta: "Explore Dental Care",
+    href: "/navigate-care/dental",
+    accent: "teal",
+  },
+  {
+    icon: "stethoscope",
+    title: "Medical Care",
+    desc: "Understand clinics, hospitals, tests, referrals, and more.",
+    cta: "Explore Medical Care",
+    href: "/navigate-care/medical",
+    accent: "teal",
+  },
+  {
+    icon: "mind",
+    title: "Mental Health Care",
+    desc: "Find guidance, support pathways, and mental health resources.",
+    cta: "Explore Mental Health",
+    href: "/navigate-care/mental-health",
+    accent: "green",
+  },
+];
+---
+<section class="care-types">
+  <span class="eyebrow">Get Started</span>
+  <h1>What kind of care are you looking for?</h1>
+  <p class="intro">Pick a starting point. We'll walk you through your options in plain language.</p>
+
+  <div class="care-grid">
+    {cards.map((c) => (
+      <article class={`care-card accent-${c.accent}`}>
+        <div class="care-icon" aria-hidden="true">
+          <svg viewBox="0 0 120 120" width="120" height="120" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path class="blob" d="M60 12C86 10 108 28 106 58C104 88 82 106 56 104C28 102 12 82 14 56C16 30 34 14 60 12Z" />
+            {c.icon === "tooth" && (
+              <>
+                <path class="ink" stroke-width="5" d="M42 30C31 30 26 41 28 54C30 66 36 72 38 86C40 97 47 98 49 89L52 74C53 69 56 66 60 66C64 66 67 69 68 74L71 89C73 98 80 97 82 86C84 72 90 66 92 54C94 41 89 30 78 30C70 30 67 36 60 36C53 36 50 30 42 30Z" />
+                <path class="ray" stroke-width="3.5" d="M96 22L100 16M102 32L109 30M86 16L87 9" />
+              </>
+            )}
+            {c.icon === "stethoscope" && (
+              <>
+                <path class="ink" stroke-width="5" d="M40 24C36 30 34 46 40 58C46 70 66 70 72 58C78 46 76 30 72 24" />
+                <path class="ink" stroke-width="5" d="M56 67V80C56 92 62 98 72 98C82 98 88 92 88 82V76" />
+                <circle class="ink" stroke-width="5" cx="88" cy="68" r="7" />
+                <circle class="dot" cx="40" cy="22" r="4" />
+                <circle class="dot" cx="72" cy="22" r="4" />
+                <path class="plus" stroke-width="6" d="M98 34V52M89 43H107" />
+              </>
+            )}
+            {c.icon === "mind" && (
+              <>
+                <path class="ink" stroke-width="5" d="M80 102V86C93 79 97 66 95 54C92 34 77 22 58 22C38 22 25 38 27 55L21 67C20 69 21 71 24 71H28V80C28 86 32 89 38 89H45V102" />
+                <path class="heart" d="M62 57C54 51 49 47 49 42C49 38 52 35 56 35C59 35 61 37 62 39C63 37 65 35 68 35C72 35 75 38 75 42C75 47 70 51 62 57Z" />
+                <path class="leaf-stem" stroke-width="3" d="M62 60V76" />
+                <path class="leaf" d="M62 72C55 72 51 68 51 61C58 61 62 65 62 72Z" />
+                <path class="leaf" d="M62 69C69 69 73 65 73 58C66 58 62 62 62 69Z" />
+                <path class="ray" stroke-width="3.5" d="M92 18L96 12M102 28L109 25M104 42L111 43" />
+              </>
+            )}
+          </svg>
+        </div>
+        <h2>{c.title}</h2>
+        <p>{c.desc}</p>
+        <a class="care-btn" href={c.href}>
+          {c.cta} <span aria-hidden="true">→</span>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .care-types { max-width: 1100px; margin: 0 auto; padding: 80px 24px 110px; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    background: rgba(27, 122, 136, 0.1);
+    color: var(--teal);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .care-types h1 {
+    font-family: 'Fraunces', serif; font-size: 40px; font-weight: 600; color: var(--navy);
+    line-height: 1.2; margin: 0 auto 14px; max-width: 640px; text-wrap: balance;
+  }
+  .intro { font-size: 17px; color: var(--navy); opacity: 0.75; margin: 0 auto 52px; max-width: 520px; }
+
+  .care-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .care-card {
+    display: flex; flex-direction: column; align-items: center;
+    background: white; border: 1px solid var(--line); border-radius: 20px;
+    padding: 36px 28px 32px;
+    box-shadow: 0 1px 2px rgba(15, 36, 56, 0.03);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .care-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(15, 36, 56, 0.1); }
+  .accent-teal:hover { border-color: var(--teal); }
+  .accent-green:hover { border-color: var(--green); }
+
+  .care-icon { margin-bottom: 18px; }
+  .blob { fill: rgba(27, 122, 136, 0.08); }
+  .accent-green .blob { fill: rgba(47, 143, 91, 0.1); }
+  .ink { stroke: var(--navy); }
+  .dot { fill: var(--teal); }
+  .ray { stroke: var(--green); }
+  .plus { stroke: var(--green); stroke-linecap: square; }
+  .heart { fill: var(--teal); }
+  .leaf { fill: var(--green); }
+  .leaf-stem { stroke: var(--green); }
+
+  .care-card h2 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; color: var(--navy); margin: 0 0 10px; }
+  .care-card p {
+    font-size: 15px; color: var(--navy); opacity: 0.75; line-height: 1.55;
+    margin: 0 0 26px; max-width: 250px; flex: 1;
+  }
+  .care-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; max-width: 240px;
+    padding: 14px 22px; border-radius: 999px;
+    background: linear-gradient(135deg, #2A93A3, var(--teal));
+    color: white; font-weight: 600; font-size: 15px; text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  }
+  .accent-green .care-btn { background: linear-gradient(135deg, #3FA36C, var(--green)); }
+  .care-btn:hover { filter: brightness(0.93); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15, 36, 56, 0.15); }
+  .care-btn span { transition: transform 0.15s ease; }
+  .care-btn:hover span { transform: translateX(3px); }
+
+  @media (max-width: 640px) {
+    .care-types { padding-top: 56px; }
+    .care-types h1 { font-size: 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .care-card, .care-btn, .care-btn span { transition: none; }
+    .care-card:hover, .care-btn:hover, .care-btn:hover span { transform: none; }
+  }
+</style>
