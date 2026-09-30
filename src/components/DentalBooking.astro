@@ -1,0 +1,81 @@
+---
+const questions = [
+  "Do you accept my dental program or plan?",
+  "Do you bill the program directly?",
+  "What will I need to pay myself?",
+  "Does this treatment need approval first?",
+  "Can I have a written estimate?",
+];
+---
+<section class="before-book">
+  <div class="inner">
+    <h2>Before you book</h2>
+    <div class="book-grid">
+      <div class="script-card">
+        <h3>What to say when you call</h3>
+        <p class="script" id="call-script">"Hi, I'm looking for a new dental provider. I have <mark>[name of program or plan]</mark>. Are you accepting new patients with this coverage? Do you bill the program directly? Is there anything I may have to pay myself? Do you need approval before treatment?"</p>
+        <div class="card-actions">
+          <button type="button" class="copy-btn">Copy script</button>
+          <a href="/navigate-care/dental/find-a-provider">How to find a provider</a>
+        </div>
+      </div>
+
+      <div class="questions-card">
+        <h3>5 questions to ask the dental office</h3>
+        <ol>
+          {questions.map((q) => <li>{q}</li>)}
+        </ol>
+        <div class="card-actions">
+          <button type="button" class="print-btn">Print checklist</button>
+          <a href="/navigate-care/dental/what-to-bring">What to bring</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const copyBtn = document.querySelector<HTMLButtonElement>('.copy-btn');
+  const script = document.getElementById('call-script');
+
+  if (copyBtn && script) {
+    copyBtn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(script.innerText);
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => { copyBtn.textContent = 'Copy script'; }, 2000);
+    });
+  }
+
+  document.querySelector('.print-btn')?.addEventListener('click', () => window.print());
+</script>
+
+<style>
+  .before-book { padding: 72px 24px 32px; }
+  .inner { max-width: 1120px; margin: 0 auto; }
+  h2 { font-size: 34px; margin: 0 0 24px; }
+  .book-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .script-card, .questions-card { border-radius: 16px; padding: 32px; }
+  .script-card { background: var(--navy); color: white; }
+  .questions-card { background: white; border: 1px solid var(--line); }
+  h3 { font-size: 22px; margin: 0 0 16px; }
+
+  .script { font-size: 17px; line-height: 1.7; margin: 0 0 24px; }
+  mark { background: rgba(27, 122, 136, 0.5); color: white; padding: 1px 6px; border-radius: 4px; }
+  ol { margin: 0 0 24px; padding-left: 22px; display: grid; gap: 10px; }
+
+  .card-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .card-actions a { color: inherit; font-size: 15px; }
+  .questions-card .card-actions a { color: var(--teal); }
+  .copy-btn, .print-btn {
+    font: inherit; font-size: 15px; font-weight: 700;
+    padding: 12px 20px; border-radius: 8px; cursor: pointer;
+  }
+  .copy-btn { background: white; color: var(--navy); border: none; }
+  .print-btn { background: transparent; color: var(--teal); border: 1.5px solid var(--teal); }
+  .print-btn:hover { background: rgba(27, 122, 136, 0.08); }
+
+  @media (max-width: 860px) {
+    .book-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 28px; }
+  }
+</style>
