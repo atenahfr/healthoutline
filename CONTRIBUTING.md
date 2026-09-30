@@ -31,14 +31,14 @@ npm run dev        # opens the site at http://localhost:4321
 src/
   pages/        One file = one page. index.astro is the homepage (/).
   layouts/
-   Layout.astro shared page frame: <head>, Header and footer
+    Layout.astro  Shared page frame: <head>, Header and Footer.
   components/   One file = one section of a page (Header, Hero, Footer…).
   styles/
     global.css  Shared colours, fonts, and base styles for the whole site.
 public/         Images and icons, served exactly as-is (e.g. /logo-icon.png).
 ```
 
-- **New page?** Add it to `src/pages/`. The file name becomes the URL: `src/pages/coverage.astro` → `/coverage`. Nested folders work too: `src/pages/coverage/ohip.astro` → `/coverage/ohip`.
+- **New page?** Add it to `src/pages/`. The file name becomes the URL: `src/pages/coverage.astro` → `/coverage`. Nested folders work too: `src/pages/coverage/ohip.astro` → `/coverage/ohip`. Wrap the page in `<Layout title="…">` so it gets the header and footer.
 - **New section?** Add a component to `src/components/`, then import it into the page.
 - **New image?** Put it in `public/` and reference it with a leading slash: `src="/my-image.png"`.
 
@@ -215,10 +215,10 @@ Match the code that is already there. The rules below describe the existing styl
 The homepage already links to these URLs. When you build one, use **exactly** this path so the existing links keep working:
 
 | URL                                        | Page                       |
-| :-------------------------------           | :------------------------- |
+| :----------------------------------------- | :------------------------- |
 | `/get-started`                             | Get started ✅ built       |
 | `/navigate-care`                           | Navigate Care hub          |
-| `/navigate-care/dental`                    | Dental care                |
+| `/navigate-care/dental`                    | Dental care ✅ built       |
 | `/navigate-care/dental/cdcp`               | Canadian Dental Care Plan  |
 | `/navigate-care/dental/ifhp`               | Interim Federal Health     |
 | `/navigate-care/dental/healthy-smiles`     | Healthy Smiles Ontario     |

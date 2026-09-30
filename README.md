@@ -26,7 +26,7 @@ npm run dev        # http://localhost:4321
 ```
 src/
   pages/         One file per page (index.astro is the homepage)
-  layouts/ Shared page frame (head, header, footer)
+  layouts/       Shared page frame (head, header, footer)
   components/    Page sections: Header, Hero, Triage, Trust, Pillars, Programs, Footer
   styles/
     global.css   Shared colours, fonts, and base styles
