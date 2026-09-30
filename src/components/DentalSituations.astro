@@ -1,0 +1,88 @@
+---
+const icons: Record<string, string> = {
+  wallet: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/>',
+  shield: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/>',
+  child: '<circle cx="12" cy="5" r="2"/><path d="M12 8v6M8 10h8M10 21l2-7 2 7"/>',
+  senior: '<circle cx="11" cy="4.5" r="2"/><path d="M11 8v5l-2 8M11 13l3 8M11 9l5 2v10"/>',
+  heart: '<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',
+  briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 13h18"/>',
+  grad: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
+  document: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+  question: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7M12 17h.01"/>',
+  chevron: '<path d="M9 6l6 6-6 6"/>',
+};
+
+const situations = [
+  { icon: "wallet", title: "I don't have dental coverage through work, family or school", program: "Canadian Dental Care Plan (CDCP)", href: "/navigate-care/dental/cdcp" },
+  { icon: "shield", title: "I'm an asylum claimant, refugee or protected person", program: "Interim Federal Health Program (IFHP)", href: "/navigate-care/dental/ifhp" },
+  { icon: "child", title: "I need dental care for a child 17 or younger", program: "Healthy Smiles Ontario", href: "/navigate-care/dental/healthy-smiles" },
+  { icon: "senior", title: "I'm 65 or older with a lower income", program: "Ontario Seniors Dental Care Program", href: "/navigate-care/dental/seniors" },
+  { icon: "heart", title: "I receive ODSP", program: "ODSP dental benefits", href: "/navigate-care/dental/odsp" },
+  { icon: "briefcase", title: "I receive Ontario Works", program: "Ontario Works dental support", href: "/navigate-care/dental/ontario-works" },
+  { icon: "grad", title: "I'm a college or university student", program: "Check your student plan first", href: "/navigate-care/dental/students" },
+  { icon: "document", title: "I'm thinking about buying dental insurance", program: "Read this before you buy", href: "/navigate-care/dental/insurance" },
+  { icon: "question", title: "None of these fit, or I'm not sure", program: "You still have options: low-cost clinics, public health and community programs", href: "/navigate-care/dental/other-options", unsure: true },
+];
+---
+<section id="situations" class="situations">
+  <div class="inner">
+    <h2>Which sounds most like you?</h2>
+    <p class="hint">More than one can apply to a family, for example a child and a parent. Check each one that fits.</p>
+
+    <div class="grid">
+      {situations.map((s) => (
+        <a class:list={["situation", { unsure: s.unsure }]} href={s.href}>
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={icons[s.icon]} />
+          </span>
+          <span class="text">
+            <strong>{s.title}</strong>
+            <span class="program">{s.program}</span>
+          </span>
+          <span class="chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons.chevron} />
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .situations { background: white; border-bottom: 1px solid var(--line); padding: 72px 24px; }
+  .inner { max-width: 1120px; margin: 0 auto; }
+  h2 { font-size: 34px; margin: 0 0 8px; }
+  .hint { opacity: 0.75; margin: 0 0 28px; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .situation {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px; border-radius: 12px;
+    background: #F9FBFA; border: 1px solid var(--line);
+    color: var(--navy); text-decoration: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .situation:hover { border-color: var(--teal); background: white; }
+  .icon {
+    flex: none; width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(27, 122, 136, 0.1); color: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .text strong { font-size: 16px; line-height: 1.35; }
+  .program { font-size: 14px; opacity: 0.7; }
+  .chevron { flex: none; display: flex; color: var(--teal); transition: transform 0.15s ease; }
+  .situation:hover .chevron { transform: translateX(3px); }
+
+  .unsure { grid-column: 1 / -1; background: transparent; border: 1.5px dashed var(--line); }
+  .unsure .icon { background: rgba(15, 36, 56, 0.06); color: var(--navy); }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    h2 { font-size: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .situation, .chevron { transition: none; }
+    .situation:hover .chevron { transform: none; }
+  }
+</style>

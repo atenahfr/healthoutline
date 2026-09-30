@@ -1,0 +1,27 @@
+---
+const reasons = [
+  { lead: "Problems are found earlier.", text: "Cavities and gum disease often start without pain." },
+  { lead: "Earlier treatment is often simpler.", text: "A small problem usually needs less work than a big one." },
+  { lead: "Your mouth is part of your health.", text: "It's not separate from the rest of your body." },
+];
+---
+<section class="checkups">
+  <div class="inner">
+    <h2>Why check-ups matter, even while you're settling in</h2>
+    <div class="reasons">
+      {reasons.map((r) => (
+        <p><strong>{r.lead}</strong> {r.text}</p>
+      ))}
+    </div>
+    <a href="/health-library/dental-checkups">Read more about check-ups and cleanings</a>
+  </div>
+</section>
+
+<style>
+  .checkups { padding: 40px 24px 32px; }
+  .inner { max-width: 1120px; margin: 0 auto; }
+  h2 { font-size: 28px; margin: 0 0 20px; }
+  .reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 32px; margin-bottom: 20px; }
+  .reasons p { margin: 0; font-size: 15px; }
+  a { color: var(--teal); font-size: 15px; }
+</style>

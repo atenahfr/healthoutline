@@ -1,0 +1,35 @@
+---
+const links = [
+  { title: "Dental words explained", desc: "What words like cleaning, filling and pre-approval mean.", href: "/health-library/dental-words" },
+  { title: "Common questions", desc: "Quick answers about costs, wait times and what's covered.", href: "/navigate-care/dental/questions" },
+  { title: "About this guide", desc: "Who wrote it, how we check it, and when it was last updated.", href: "/about" },
+];
+---
+<section class="more-help">
+  <div class="inner">
+    <h2>More help</h2>
+    <div class="help-grid">
+      {links.map((l) => (
+        <a class="help-card" href={l.href}>
+          <h3>{l.title}</h3>
+          <p>{l.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .more-help { padding: 40px 24px 96px; }
+  .inner { max-width: 1120px; margin: 0 auto; }
+  h2 { font-size: 24px; margin: 0 0 20px; }
+  .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .help-card {
+    background: white; border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px 20px; color: var(--navy); text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+  .help-card:hover { border-color: var(--teal); }
+  .help-card h3 { font-size: 18px; margin: 0 0 6px; }
+  .help-card p { font-size: 14px; opacity: 0.7; margin: 0; }
+</style>

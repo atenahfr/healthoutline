@@ -30,13 +30,15 @@ npm run dev        # opens the site at http://localhost:4321
 ```
 src/
   pages/        One file = one page. index.astro is the homepage (/).
+  layouts/
+    Layout.astro  Shared page frame: <head>, Header and Footer.
   components/   One file = one section of a page (Header, Hero, Footer…).
   styles/
     global.css  Shared colours, fonts, and base styles for the whole site.
 public/         Images and icons, served exactly as-is (e.g. /logo-icon.png).
 ```
 
-- **New page?** Add it to `src/pages/`. The file name becomes the URL: `src/pages/coverage.astro` → `/coverage`. Nested folders work too: `src/pages/coverage/ohip.astro` → `/coverage/ohip`.
+- **New page?** Add it to `src/pages/`. The file name becomes the URL: `src/pages/coverage.astro` → `/coverage`. Nested folders work too: `src/pages/coverage/ohip.astro` → `/coverage/ohip`. Wrap the page in `<Layout title="…">` so it gets the header and footer.
 - **New section?** Add a component to `src/components/`, then import it into the page.
 - **New image?** Put it in `public/` and reference it with a leading slash: `src="/my-image.png"`.
 
@@ -175,7 +177,7 @@ Match the code that is already there. The rules below describe the existing styl
 
 ### Components (`.astro` files)
 
-- **File names:** PascalCase, named after the section: `Header.astro`, `Programs.astro`.
+- **File names:** PascalCase, named after the section: `Header.astro`, `Programs.astro`. Keep components flat in `src/components/` (no subfolders). A section used on only one page starts with that page's name: `DentalHero.astro`, `DentalSituations.astro`.
 - **Structure:** frontmatter (`---`) at the top, then HTML, then one `<style>` block at the bottom.
 - **Repeated items live in a data list** in the frontmatter, and the HTML loops over it with `.map()`. See `Triage.astro`, `Pillars.astro`, and `Programs.astro`. Don't copy-paste the same card markup over and over.
 - **Styles are scoped.** A component's `<style>` only affects that component, so keep each component's styles inside it.
@@ -212,23 +214,37 @@ Match the code that is already there. The rules below describe the existing styl
 
 The homepage already links to these URLs. When you build one, use **exactly** this path so the existing links keep working:
 
-| URL                              | Page                       |
-| :------------------------------- | :------------------------- |
-| `/get-started`                   | Get started ✅ built       |
-| `/navigate-care`                 | Navigate Care hub          |
-| `/navigate-care/dental`          | Dental care                |
-| `/navigate-care/medical`         | Medical care               |
-| `/navigate-care/new-to-ontario`  | New to Ontario             |
-| `/navigate-care/find-a-doctor`   | Find a doctor              |
-| `/navigate-care/mental-health`   | Mental health support      |
-| `/coverage`                      | Coverage hub               |
-| `/coverage/ohip`                 | OHIP / health card         |
-| `/health-library`                | Health Library             |
-| `/programs`                      | Programs hub               |
-| `/programs/workshops`            | Free workshops             |
-| `/programs/care-team`            | Meet the care team         |
-| `/about`                         | About / How it works       |
-| `/about/volunteer`               | Volunteer or partner       |
+| URL                                        | Page                       |
+| :----------------------------------------- | :------------------------- |
+| `/get-started`                             | Get started ✅ built       |
+| `/navigate-care`                           | Navigate Care hub          |
+| `/navigate-care/dental`                    | Dental care ✅ built       |
+| `/navigate-care/dental/cdcp`               | Canadian Dental Care Plan  |
+| `/navigate-care/dental/ifhp`               | Interim Federal Health     |
+| `/navigate-care/dental/healthy-smiles`     | Healthy Smiles Ontario     |
+| `/navigate-care/dental/seniors`            | Seniors Dental Care        |
+| `/navigate-care/dental/odsp`               | ODSP dental                |
+| `/navigate-care/dental/ontario-works`      | Ontario Works dental       |
+| `/navigate-care/dental/students`           | Student dental plans       |
+| `/navigate-care/dental/insurance`          | Buying dental insurance    |
+| `/navigate-care/dental/other-options`      | Other low-cost options     |
+| `/navigate-care/dental/find-a-provider`    | How to find a provider     |
+| `/navigate-care/dental/what-to-bring`      | What to bring              |
+| `/navigate-care/dental/questions`          | Dental common questions    |
+| `/health-library/dental-checkups`          | Check-ups and cleanings    |
+| `/health-library/dental-words`             | Dental words explained     |
+| `/navigate-care/medical`                   | Medical care               |
+| `/navigate-care/new-to-ontario`            | New to Ontario             |
+| `/navigate-care/find-a-doctor`             | Find a doctor              |
+| `/navigate-care/mental-health`             | Mental health support      |
+| `/coverage`                                | Coverage hub               |
+| `/coverage/ohip`                           | OHIP / health card         |
+| `/health-library`                          | Health Library             |
+| `/programs`                                | Programs hub               |
+| `/programs/workshops`                      | Free workshops             |
+| `/programs/care-team`                      | Meet the care team         |
+| `/about`                                   | About / How it works       |
+| `/about/volunteer`                         | Volunteer or partner       |
 
 When you change or add a URL, update this table in the same PR.
 
