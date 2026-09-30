@@ -1,0 +1,70 @@
+---
+const steps = [
+  "Pick your situation",
+  "Check the rules on the official government page",
+  "Find a dentist who accepts your coverage",
+];
+---
+<section class="dental-hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> › <a href="/get-started">Get Started</a> › Dental care
+      </nav>
+      <h1>Dental care in Ontario for newcomers</h1>
+      <p class="lead">You don't need to understand Canada's dental system before asking for help.</p>
+      <p class="body">Pick the situation that sounds most like you. We'll show you what may apply, and where to confirm it with the official program.</p>
+      <div class="hero-actions">
+        <a href="#situations" class="primary-btn">Find my option</a>
+        <span class="checked">Last checked September 2026, Ontario</span>
+      </div>
+    </div>
+
+    <aside class="how-card">
+      <h2>How this works</h2>
+      <ol>
+        {steps.map((step, i) => (
+          <li><span class="step-num">{i + 1}</span>{step}</li>
+        ))}
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .dental-hero { border-bottom: 1px solid var(--line); padding: 32px 24px 72px; }
+  .hero-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 360px; gap: 64px; align-items: start;
+  }
+  .breadcrumb { font-size: 14px; opacity: 0.8; margin-bottom: 28px; }
+  .breadcrumb a { color: inherit; }
+  h1 { font-size: 52px; line-height: 1.1; margin: 0 0 20px; }
+  .lead { font-size: 21px; line-height: 1.5; margin: 0 0 16px; }
+  .body { font-size: 16px; opacity: 0.75; max-width: 600px; margin: 0 0 28px; }
+  .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .primary-btn {
+    background: var(--teal); color: white; text-decoration: none;
+    padding: 14px 26px; border-radius: 8px; font-weight: 700;
+    transition: background 0.15s ease;
+  }
+  .primary-btn:hover { background: #17636F; }
+  .checked { font-size: 14px; color: var(--green); }
+
+  .how-card { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 28px; margin-top: 44px; }
+  .how-card h2 { font-family: 'Public Sans', sans-serif; font-size: 18px; margin: 0 0 20px; }
+  .how-card ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+  .how-card li { display: flex; align-items: flex-start; gap: 14px; font-size: 15px; }
+  .step-num {
+    flex: none; width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(27, 122, 136, 0.12); color: var(--teal);
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .how-card { margin-top: 0; }
+    h1 { font-size: 38px; }
+  }
+</style>
