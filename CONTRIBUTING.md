@@ -244,7 +244,15 @@ The homepage already links to these URLs. When you build one, use **exactly** th
 | `/health-library/medical-words`            | Medical words explained    |
 | `/navigate-care/new-to-ontario`            | New to Ontario             |
 | `/navigate-care/find-a-doctor`             | Find a doctor              |
-| `/navigate-care/mental-health`             | Mental health support      |
+| `/navigate-care/mental-health`             | Mental health support ✅ built |
+| `/navigate-care/mental-health/connexontario` | ConnexOntario               |
+| `/navigate-care/mental-health/free-therapy` | Ontario Structured Psychotherapy |
+| `/navigate-care/mental-health/youth`       | Kids Help Phone & youth support |
+| `/navigate-care/mental-health/addictions`  | Addictions support          |
+| `/navigate-care/mental-health/workplace-school-benefits` | EAP & student benefits |
+| `/navigate-care/mental-health/other-options` | Other mental health options |
+| `/navigate-care/mental-health/questions`   | Mental health common questions |
+| `/health-library/mental-health-words`      | Mental health words explained |
 | `/coverage`                                | Coverage hub               |
 | `/coverage/ohip`                           | OHIP / health card         |
 | `/health-library`                          | Health Library             |
