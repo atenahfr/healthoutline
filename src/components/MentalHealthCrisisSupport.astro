@@ -1,0 +1,67 @@
+---
+const lines = [
+  {
+    name: "988 Suicide Crisis Helpline",
+    who: "If you're thinking about suicide, or you're worried about someone who might be.",
+    contact: "Call or text 988",
+    href: "tel:988",
+  },
+  {
+    name: "ConnexOntario",
+    who: "For mental health, addictions, or problem gambling support and referrals.",
+    contact: "Call 1-866-531-2600, or text CONNEX to 247247",
+    href: "tel:18665312600",
+  },
+  {
+    name: "Kids Help Phone",
+    who: "For children, youth, and young adults.",
+    contact: "Call 1-800-668-6868, or text CONNECT to 686868",
+    href: "tel:18006686868",
+  },
+];
+---
+<section id="crisis" class="crisis">
+  <div class="inner">
+    <h2>If you need help right now</h2>
+    <p class="hint">These are free, confidential, and available right now, whether it's you or someone you're worried about.</p>
+
+    <div class="crisis-grid">
+      {lines.map((l) => (
+        <a class="crisis-card" href={l.href}>
+          <h3>{l.name}</h3>
+          <p class="who">{l.who}</p>
+          <p class="contact">{l.contact}</p>
+          <span class="hours">Available 24/7</span>
+        </a>
+      ))}
+    </div>
+
+    <p class="danger-note">In immediate physical danger? Call <strong>911</strong>.</p>
+  </div>
+</section>
+
+<style>
+  .crisis { background: var(--navy); color: white; padding: 56px 24px; }
+  .inner { max-width: 1120px; margin: 0 auto; }
+  h2 { font-size: 30px; margin: 0 0 8px; color: white; }
+  .hint { opacity: 0.85; margin: 0 0 28px; max-width: 560px; }
+
+  .crisis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .crisis-card {
+    display: block; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px; padding: 22px; text-decoration: none; color: white;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .crisis-card:hover { background: rgba(255, 255, 255, 0.11); border-color: rgba(255, 255, 255, 0.3); }
+  .crisis-card h3 { font-size: 18px; margin: 0 0 8px; }
+  .who { font-size: 14px; opacity: 0.8; line-height: 1.5; margin: 0 0 14px; min-height: 42px; }
+  .contact { font-size: 15.5px; font-weight: 700; margin: 0 0 6px; }
+  .hours { font-size: 12.5px; color: var(--green); font-weight: 600; letter-spacing: 0.02em; }
+
+  .danger-note { margin: 28px 0 0; font-size: 15px; opacity: 0.9; }
+
+  @media (max-width: 860px) {
+    .crisis-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 26px; }
+  }
+</style>
