@@ -1,0 +1,27 @@
+---
+const reasons = [
+  { lead: "You'll have someone who knows your history.", text: "A family doctor or nurse practitioner tracks your health over time, not just one visit." },
+  { lead: "It's often faster than starting over.", text: "Walk-in clinics are useful, but they usually can't see your past records or coordinate ongoing care." },
+  { lead: "It's how most referrals happen.", text: "Seeing a specialist in Ontario usually starts with a referral from a regular doctor or nurse practitioner." },
+];
+---
+<section class="why-doctor">
+  <div class="inner">
+    <h2>Why having your own doctor matters, even if you're healthy now</h2>
+    <div class="reasons">
+      {reasons.map((r) => (
+        <p><strong>{r.lead}</strong> {r.text}</p>
+      ))}
+    </div>
+    <a href="/navigate-care/find-a-doctor">Read more about registering with Health Care Connect</a>
+  </div>
+</section>
+
+<style>
+  .why-doctor { padding: 40px 24px 32px; }
+  .inner { max-width: 1120px; margin: 0 auto; }
+  h2 { font-size: 28px; margin: 0 0 20px; }
+  .reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 32px; margin-bottom: 20px; }
+  .reasons p { margin: 0; font-size: 15px; }
+  a { color: var(--teal); font-size: 15px; }
+</style>

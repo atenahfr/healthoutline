@@ -1,0 +1,93 @@
+---
+const icons: Record<string, string> = {
+  doctor: '<circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.6 3.1-6.2 7-6.2s7 2.6 7 6.2"/>',
+  clinic: '<path d="M6 21V10l6-4 6 4v11"/><path d="M12 21v-6h0"/><path d="M12 4v6M9 7h6"/>',
+  siren: '<path d="M12 3L2 20h20L12 3z"/><path d="M12 9v5M12 17h.01"/>',
+  referral: '<circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4M12.5 9.5L15 12l-2.5 2.5"/>',
+  chat: '<path d="M4 5h16v10H9l-5 4V5z"/><path d="M8 9h8M8 12h5"/>',
+  card: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10.5h18M7 15.5h4"/>',
+  flask: '<path d="M9 3h6M10 3v6.5l-5 8.5a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-8.5V3"/><path d="M7.5 15h9"/>',
+  pin: '<path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',
+  question: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7M12 17h.01"/>',
+  chevron: '<path d="M9 6l6 6-6 6"/>',
+};
+
+const situations = [
+  { icon: "doctor", title: "I don't have a family doctor or nurse practitioner", program: "Health Care Connect", href: "/navigate-care/find-a-doctor" },
+  { icon: "clinic", title: "I need care today, but it isn't an emergency", program: "Walk-in clinics & urgent care", href: "/navigate-care/medical/walk-in-urgent-care" },
+  { icon: "siren", title: "This could be a medical emergency", program: "Call 911 or go to the nearest ER", href: "/navigate-care/medical/emergency-care", urgent: true },
+  { icon: "referral", title: "I need to see a specialist", program: "How referrals work in Ontario", href: "/navigate-care/medical/specialist-referrals" },
+  { icon: "chat", title: "I have a health question right now, any time of day", program: "Health811 (811)", href: "/navigate-care/medical/health811" },
+  { icon: "card", title: "I don't have a health card (OHIP) yet", program: "Apply for OHIP", href: "/coverage/ohip" },
+  { icon: "flask", title: "I need bloodwork, an X-ray, or another test", program: "Lab and imaging basics", href: "/navigate-care/medical/tests-and-labs" },
+  { icon: "pin", title: "I just moved to Ontario and don't know where to start", program: "New to Ontario guide", href: "/navigate-care/new-to-ontario" },
+  { icon: "question", title: "None of these fit, or I'm not sure", program: "You still have options: Health811, walk-in clinics, and community health centres", href: "/navigate-care/medical/other-options", unsure: true },
+];
+---
+<section id="situations" class="situations">
+  <div class="inner">
+    <h2>Which sounds most like you?</h2>
+    <p class="hint">More than one can apply, for example a question today and a doctor you're still looking for.</p>
+
+    <div class="grid">
+      {situations.map((s) => (
+        <a class:list={["situation", { unsure: s.unsure, urgent: s.urgent }]} href={s.href}>
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={icons[s.icon]} />
+          </span>
+          <span class="text">
+            <strong>{s.title}</strong>
+            <span class="program">{s.program}</span>
+          </span>
+          <span class="chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons.chevron} />
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .situations { background: white; border-bottom: 1px solid var(--line); padding: 72px 24px; }
+  .inner { max-width: 1120px; margin: 0 auto; }
+  h2 { font-size: 34px; margin: 0 0 8px; }
+  .hint { opacity: 0.75; margin: 0 0 28px; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .situation {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px; border-radius: 12px;
+    background: #F9FBFA; border: 1px solid var(--line);
+    color: var(--navy); text-decoration: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .situation:hover { border-color: var(--teal); background: white; }
+  .icon {
+    flex: none; width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(27, 122, 136, 0.1); color: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .text strong { font-size: 16px; line-height: 1.35; }
+  .program { font-size: 14px; opacity: 0.7; }
+  .chevron { flex: none; display: flex; color: var(--teal); transition: transform 0.15s ease; }
+  .situation:hover .chevron { transform: translateX(3px); }
+
+  .urgent { background: rgba(15, 36, 56, 0.04); border-color: rgba(15, 36, 56, 0.25); }
+  .urgent .icon { background: rgba(15, 36, 56, 0.1); color: var(--navy); }
+  .urgent .program { color: var(--navy); opacity: 0.85; font-weight: 600; }
+  .urgent:hover { border-color: var(--navy); }
+
+  .unsure { grid-column: 1 / -1; background: transparent; border: 1.5px dashed var(--line); }
+  .unsure .icon { background: rgba(15, 36, 56, 0.06); color: var(--navy); }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    h2 { font-size: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .situation, .chevron { transition: none; }
+    .situation:hover .chevron { transform: none; }
+  }
+</style>

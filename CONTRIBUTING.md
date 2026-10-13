@@ -233,7 +233,15 @@ The homepage already links to these URLs. When you build one, use **exactly** th
 | `/navigate-care/dental/questions`          | Dental common questions    |
 | `/health-library/dental-checkups`          | Check-ups and cleanings    |
 | `/health-library/dental-words`             | Dental words explained     |
-| `/navigate-care/medical`                   | Medical care               |
+| `/navigate-care/medical`                   | Medical care ✅ built      |
+| `/navigate-care/medical/walk-in-urgent-care` | Walk-in clinics & urgent care |
+| `/navigate-care/medical/emergency-care`    | Emergency care (ER vs 911) |
+| `/navigate-care/medical/specialist-referrals` | How referrals work      |
+| `/navigate-care/medical/health811`         | Health811 (811)            |
+| `/navigate-care/medical/tests-and-labs`    | Lab and imaging basics     |
+| `/navigate-care/medical/other-options`     | Other medical options      |
+| `/navigate-care/medical/questions`         | Medical common questions   |
+| `/health-library/medical-words`            | Medical words explained    |
 | `/navigate-care/new-to-ontario`            | New to Ontario             |
 | `/navigate-care/find-a-doctor`             | Find a doctor              |
 | `/navigate-care/mental-health`             | Mental health support      |
