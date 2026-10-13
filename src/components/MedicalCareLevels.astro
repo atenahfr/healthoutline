@@ -1,0 +1,64 @@
+---
+const levels = [
+  {
+    title: "Family doctor or walk-in clinic",
+    use: "Ongoing care, prescriptions, check-ups, and anything that isn't urgent, like a cold, a minor infection, or a follow-up.",
+    note: "Hours vary. Many walk-ins are open evenings and weekends. Bring your health card.",
+  },
+  {
+    title: "Urgent care centre",
+    use: "Needs attention the same day but isn't life-threatening, like a sprain, a cut that may need stitches, a bad earache, or a sore throat.",
+    note: "Usually faster than an ER for the same problem, but not open 24 hours.",
+  },
+  {
+    title: "Emergency room (ER)",
+    use: "Life- or limb-threatening emergencies, like chest pain, trouble breathing, severe bleeding, signs of a stroke, or a serious injury.",
+    note: "Open 24/7. If it's an emergency, call 911 instead of driving yourself.",
+    urgent: true,
+  },
+];
+---
+<section class="care-levels">
+  <div class="inner">
+    <h2>Where should I go?</h2>
+    <p class="hint">Ontario has more than one place to get care, depending on how urgent it is.</p>
+
+    <div class="levels-grid">
+      {levels.map((l) => (
+        <div class:list={["level-card", { urgent: l.urgent }]}>
+          <h3>{l.title}</h3>
+          <p class="use">{l.use}</p>
+          <p class="note">{l.note}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="footer-note">Not sure which one fits? <a href="/navigate-care/medical/health811">Health811 (811)</a> can help you decide, any time of day.</p>
+  </div>
+</section>
+
+<style>
+  .care-levels { padding: 72px 24px; }
+  .inner { max-width: 1120px; margin: 0 auto; }
+  h2 { font-size: 34px; margin: 0 0 8px; }
+  .hint { opacity: 0.75; margin: 0 0 28px; }
+
+  .levels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .level-card {
+    background: white; border: 1px solid var(--line); border-radius: 16px;
+    padding: 26px 24px;
+  }
+  .level-card.urgent { background: rgba(15, 36, 56, 0.04); border-color: rgba(15, 36, 56, 0.25); }
+  .level-card h3 { font-size: 19px; margin: 0 0 12px; }
+  .use { font-size: 15px; line-height: 1.6; margin: 0 0 14px; }
+  .note { font-size: 13.5px; opacity: 0.75; margin: 0; }
+  .level-card.urgent .note { color: var(--navy); opacity: 0.9; font-weight: 600; }
+
+  .footer-note { font-size: 15px; margin: 28px 0 0; }
+  .footer-note a { color: var(--teal); }
+
+  @media (max-width: 860px) {
+    .levels-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 28px; }
+  }
+</style>
